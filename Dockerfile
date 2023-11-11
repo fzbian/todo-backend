@@ -4,8 +4,9 @@ WORKDIR /app
 
 COPY . .
 
+RUN dotnet restore
 RUN dotnet publish -c Release -o out
 
 EXPOSE 80
 
-CMD ["dotnet", "out/TodoBackend.dll"]
+CMD ["dotnet", "out/todo-backend.dll"]
