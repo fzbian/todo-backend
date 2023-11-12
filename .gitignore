@@ -13,4 +13,7 @@ obj/
 # Docker
 .dockerignore
 fly.toml
+
+# Migrations
+Migrations/
 # End of https://www.toptal.com/developers/gitignore/api/dotnetcore

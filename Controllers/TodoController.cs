@@ -35,14 +35,14 @@ namespace todoBackend.Controllers
         }
 
         [HttpPost("CreateTask")]
-        public async Task<IActionResult> CreateTask([FromBody] Modules.Todos task)
+        public async Task<IActionResult> CreateTask([FromBody] Models.Todos task)
         {
             var todo = await _todoServices.CreateTask(task);
             return Ok(todo);
         }
 
         [HttpPut("UpdateTask/{id}")]
-        public async Task<IActionResult> UpdateTask(Guid id, [FromBody] Modules.Todos task)
+        public async Task<IActionResult> UpdateTask(Guid id, [FromBody] Models.Todos task)
         {
             var todo = await _todoServices.UpdateTask(id, task);
             return Ok(todo);
