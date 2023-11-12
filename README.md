@@ -55,10 +55,10 @@ Use HTTP methods (GET, POST, PUT, DELETE) to interact with the API endpoints.
 
 ## Endpoints
 
-### Get all tasks
+### Server health
 - **Method:** `GET`
 - **Endpoint:** `/api/Todo`
-- **Description:** Get all tasks.
+- **Description:** Verify status server
 - **Response:** `200 OK`
 
 ### Get tasks
