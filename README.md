@@ -115,4 +115,4 @@ Feel free to contribute to this project.
 
 ## License
 
-This project is licensed under the [MIT license] - see the [LICENSE FILE](LICENSE.md) file for details.
+This project is licensed under the [MIT license] - see the [LICENSE FILE](LICENSE) file for details.
