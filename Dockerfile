@@ -1,12 +1,22 @@
-FROM mcr.microsoft.com/dotnet/sdk:7.0
+# Adjust DOTNET_OS_VERSION as desired
+ARG DOTNET_OS_VERSION="-alpine"
+ARG DOTNET_SDK_VERSION=7.0
 
-WORKDIR /app
+FROM mcr.microsoft.com/dotnet/sdk:${DOTNET_SDK_VERSION}${DOTNET_OS_VERSION} AS build
+WORKDIR /src
 
-COPY . .
-
+# copy everything
+COPY . ./
+# restore as distinct layers
 RUN dotnet restore
-RUN dotnet publish -c Release -o out
+# build and publish a release
+RUN dotnet publish -c Release -o /app
 
-EXPOSE 80
-
-CMD ["dotnet", "out/todo-backend.dll"]
+# final stage/image
+FROM mcr.microsoft.com/dotnet/aspnet:${DOTNET_SDK_VERSION}
+ENV ASPNETCORE_URLS http://+:8080
+ENV ASPNETCORE_ENVIRONMENT Production
+EXPOSE 8080
+WORKDIR /app
+COPY --from=build /app .
+ENTRYPOINT [ "dotnet", "todo-backend.dll" ]
