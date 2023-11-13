@@ -56,8 +56,9 @@ namespace todoBackend.Services
             }
 
             actualTodo.TodoContent = task.TodoContent;
-            actualTodo.TodoCompleted = task.TodoCompleted;
             actualTodo.TodoDateUpdated = DateTime.Now.ToUniversalTime();
+            _context.Todos.Update(actualTodo);
+            _context.SaveChanges();
             return await Task.FromResult(actualTodo);
         }
 
@@ -72,6 +73,8 @@ namespace todoBackend.Services
 
             todo.TodoCompleted = completed;
             todo.TodoDateCompleted = DateTime.Now.ToUniversalTime();
+            _context.Todos.Update(todo);
+            _context.SaveChanges();
             return await Task.FromResult(todo);
         }
 
